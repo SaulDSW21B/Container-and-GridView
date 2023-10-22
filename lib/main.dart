@@ -151,12 +151,11 @@ class PaginaCuatro extends StatelessWidget {
   }
 }
 
-
-
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    PageController _pageController = PageController(initialPage: 0);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -164,11 +163,36 @@ class MyApp extends StatelessWidget {
           title: Text('Ejemplo con Container y GridView'),
         ),
         body: PageView(
+          controller: _pageController,
           children: [
             PaginaUno(),
             PaginaDos(),
             PaginaTres(),
             PaginaCuatro(),
+          ],
+        ),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              onPressed: () {
+                if (_pageController.page! > 0) {
+                  _pageController.previousPage(
+                      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+                }
+              },
+              child: Icon(Icons.arrow_back),
+            ),
+            SizedBox(width: 16),
+            FloatingActionButton(
+              onPressed: () {
+                if (_pageController.page! < 3) {
+                  _pageController.nextPage(
+                      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+                }
+              },
+              child: Icon(Icons.arrow_forward),
+            ),
           ],
         ),
       ),
