@@ -166,7 +166,9 @@ class MyApp extends StatelessWidget {
         body: PageView(
           children: [
             PaginaUno(),
-            
+            PaginaDos(),
+            PaginaTres(),
+            PaginaCuatro(),
           ],
         ),
       ),
