@@ -5,7 +5,12 @@ void main() {
 }
 
 class PaginaUno extends StatelessWidget {
-  
+  List<String> listaDeRutasDeImagenes = [
+    'assets/zapatos.png',
+    'assets/zapatos3.png',
+    'assets/zapatos2.png',
+    'assets/zapatos7.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +20,20 @@ class PaginaUno extends StatelessWidget {
       ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
+          crossAxisCount: 1,
           crossAxisSpacing: 10.0,
           mainAxisSpacing: 10.0,
         ),
-        itemCount: 3,
+        itemCount: listaDeRutasDeImagenes.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
             color: Colors.blueAccent,
+            child: Center(
+              child: Image.asset(
+                listaDeRutasDeImagenes[index],
+                fit: BoxFit.cover,
+              ),
+            ),
           );
         },
       ),
